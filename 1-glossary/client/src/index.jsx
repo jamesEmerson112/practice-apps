@@ -1,9 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+import App from "./components/App.jsx";
 
-render(
-  <div>
-    <p>Hello, World!</p>
-  </div>,
-  document.getElementById("root")
-);
+const rootNode = document.getElementById('root');
+render(<App />, rootNode);
