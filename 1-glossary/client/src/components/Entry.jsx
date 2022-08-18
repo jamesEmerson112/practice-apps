@@ -10,24 +10,32 @@ class Entry extends React.Component {
       definition: ''
     }
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.setWord = this.setWord.bind(this);
+    this.setDefinition = this.setDefinition.bind(this);
   }
 
-  handleChange(event) {
+  setWord(e) {
     this.setState({
-      [event.target.name]: event.target.value
-    });
+      word: event.target.value
+    })
+  }
+
+  setDefinition(e) {
+    this.setState({
+      definition: event.target.value
+    })
   }
 
   handleSubmit(event) {
-    alert('A word was submitted: ' + this.state.word);
-    alert('A definition was submitted: ' + this.state.definition);
-    console.log(this.state);
-
+    // alert('A word was submitted: ' + this.state.word);
+    // alert('A definition was submitted: ' + this.state.definition);
+    let wordObj = {word: this.state.word, definition: this.state.definition};
+    // console.log(this.props);
+    this.props.updateEntry(wordObj);
     event.preventDefault();
   }
-
 
 
   render() {
@@ -35,14 +43,19 @@ class Entry extends React.Component {
       <div>
         <form id="entry-form">
           <h3>Entry Form:</h3>
+
           <input type="text" id="word" name="word"
           placeholder="word"
-          onChange={this.handleChange}></input>
+          onChange={this.setWord}></input>
+
           <br></br>
+
           <input type="text" id="definition" name="definition"
           placeholder="definition"
-           onChange={this.handleChange}></input>
+          onChange={this.setDefinition}></input>
+
           <br></br>
+
           <button className="entry-button" type="button" onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>

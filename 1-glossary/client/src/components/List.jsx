@@ -7,10 +7,19 @@ class List extends React.Component {
     super(props);
   }
 
+  // componentDidMount() {
+  //   console.log(this.props);
+  // }
+
   render() {
     return (
       <div>
-        <h3>List</h3>
+      There are {this.props.listOfWords.length} words.
+      {this.props.listOfWords.map(word => {
+        return (
+          <p key={word.word}>{word.word} - {word.definition}</p>
+        )
+      })}
       </div>
     )
   }
