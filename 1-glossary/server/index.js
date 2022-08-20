@@ -29,7 +29,6 @@ app.listen(port);
 console.log(`Listening at http://localhost:${port}`);
 
 app.post('/word', (req, res) => {
-  console.log(req.body);
   db.save(req.body);
   res.status(200).send('hello');
 });
