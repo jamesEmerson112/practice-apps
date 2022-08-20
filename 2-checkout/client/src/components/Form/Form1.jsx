@@ -12,6 +12,7 @@ class Form1 extends React.Component {
         <p>Name</p>
         <p>Email</p>
         <p>Password</p>
+        <button>Submit</button>
       </div>
     )
   }

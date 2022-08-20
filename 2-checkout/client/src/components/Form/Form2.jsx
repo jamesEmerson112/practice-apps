@@ -15,7 +15,7 @@ class Form2 extends React.Component {
         <p>State</p>
         <p>Zip Code</p>
         <p>Phone Number</p>
-
+        <button>Submit</button>
       </div>
     )
   }

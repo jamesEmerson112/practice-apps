@@ -9,6 +9,10 @@ class Form3 extends React.Component {
     return (
       <div>
         <p>Form3</p>
+        <p>Creadit Card #</p>
+        <p>Security Number</p>
+        <p>Form3</p>
+        <button>Submit</button>
       </div>
     )
   }
