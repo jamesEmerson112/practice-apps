@@ -29,6 +29,6 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
  *
  *
  */
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);
