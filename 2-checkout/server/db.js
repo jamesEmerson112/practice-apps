@@ -23,9 +23,17 @@ db.connectAsync()
       return db.queryAsync(
         `CREATE TABLE IF NOT EXISTS user_info (
           id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-          username varchar(30) NOT NULL,
+          name varchar(30) NOT NULL,
+          email varchar(60) NOT NULL,
           password varchar(40) NOT NULL,
-          email varchar(50) NOT NULL,
+          line1addr varchar(60),
+          line2addr varchar(60),
+          city varchar(20),
+          state varchar (10),
+          zipcode INT,
+          phoneNumber INT,
+          creditCardNumber INT,
+          securityNumber INT,
           session_id varchar(60) NOT NULL
           )`
       )
@@ -33,7 +41,6 @@ db.connectAsync()
   )
   .catch((err) => console.log(err));
 
-
-  let queryStr = `INSERT INTO user_info (username, password, email, session_id)
-  VALUES (?, ?, ?, ?)`
+  let queryStr = `INSERT INTO user_info (username, email, password, line1addr, line2addr, city, state, zipcode, phoneNumber, creditCardNumber, securityNumber, session_id)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 module.exports = db;

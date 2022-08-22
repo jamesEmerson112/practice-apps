@@ -29,6 +29,15 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
  *
  *
  */
+
+app.post('/user', (req, res) => {
+  console.log('req.body ', req.body);
+
+  // save the data to the query
+
+  res.status(200).send(req.body);
+})
+
 const port = process.env.PORT;
 app.listen(port);
 console.log(`Listening at http://localhost:${port}`);

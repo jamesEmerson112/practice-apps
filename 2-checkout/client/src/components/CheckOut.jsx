@@ -1,30 +1,51 @@
 import React from "react";
 import Form1 from "./Form/Form1.jsx";
+import axios from "axios";
 
 class CheckOut extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {}
-    }
-
-    this.updateForm1 = this.updateForm1.bind(this);
-  }
-
-  updateForm1(userObj) {
-    // logging out user info
-    console.log(this.state.user);
-
-    //
-    console.log(userObj);
-    for (const key in userObj) {
-      if (!this.state.user.hasOwnProperty(key)) {
-        this.state.user[key] = userObj[key];
+      user: {
+        name: '',
+        email: '',
+        password: '',
+        line1addr: '',
+        line2addr: '',
+        city: '',
+        state: '',
+        zipcode: '',
+        phoneNumber: '',
+        creditCardNumber: '',
+        securityNumber: ''
       }
     }
 
-    // logging out user info
-    console.log('this.state.user ', this.state.user);
+    this.updateForm1 = this.updateForm1.bind(this);
+    this.test = this.test.bind(this);
+  }
+
+  updateForm1(userObj) {
+    // logging out user info to check if user info is refreshed
+    // console.log(this.state.user);
+
+    // update the state
+    for (const key in userObj) {
+        this.state.user[key] = userObj[key];
+    }
+    console.log(this.state.user);
+    // post request
+    axios.post('/user', this.state.user)
+      .then(() => {
+        console.log('POST request is successful');
+      })
+      .catch((event) => {
+        console.warn(event);
+      })
+  }
+
+  test() {
+    console.log('test this.state.user ', this.state.user);
   }
 
   render() {
@@ -32,6 +53,7 @@ class CheckOut extends React.Component {
       <div id="CheckOut">
         <button>Check Out</button>
         <Form1 updateForm1={this.updateForm1}/>
+        <button onClick={this.test}>test</button>
       </div>
     )
   }
